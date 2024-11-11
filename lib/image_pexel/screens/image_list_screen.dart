@@ -13,7 +13,7 @@ class ImageListScreen extends StatefulWidget {
   _ImageListScreenState createState() => _ImageListScreenState();
 }
 
-class _ImageListScreenState extends State<ImageListScreen> {
+class _ImageListScreenState extends BaseState<ImageListScreen> {
   late ScrollController scrollController;
 
   @override

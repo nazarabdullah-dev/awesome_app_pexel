@@ -1,3 +1,4 @@
+import 'package:awesome_app/core/bloc/connectivity_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:awesome_app/image_pexel/bloc/image_provider.dart';
@@ -23,6 +24,9 @@ class MainApp extends StatelessWidget {
             BlocProvider<ImageProviderBloc>(
               create: (context) => ImageProviderBloc()..add(FetchImages()),
             ),
+            BlocProvider<ConnectivityBloc>(
+              create: (context) => ConnectivityBloc(),
+            )
           ],
           child: MaterialApp(
               title: 'Awesome App',
