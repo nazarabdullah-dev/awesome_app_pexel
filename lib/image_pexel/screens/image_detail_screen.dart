@@ -1,12 +1,18 @@
+import 'package:awesome_app/core/widgets/base_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:awesome_app/image_pexel/models/image_data.dart'; // Import the new models file
 
-class ImageDetailScreen extends StatelessWidget {
+class ImageDetailScreen extends StatefulWidget {
   final ImageData image;
 
   const ImageDetailScreen({super.key, required this.image});
 
+  @override
+  State<ImageDetailScreen> createState() => _ImageDetailScreenState();
+}
+
+class _ImageDetailScreenState extends BaseState<ImageDetailScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -20,9 +26,9 @@ class ImageDetailScreen extends StatelessWidget {
           children: [
             Center(
               child: Hero(
-                tag: 'image_${image.url}',
+                tag: 'image_${widget.image.url}',
                 child: Image.network(
-                  image.src.portrait,
+                  widget.image.src.portrait,
                   width: double.infinity,
                   height: 1.sh * 0.632,
                   frameBuilder:
@@ -41,12 +47,12 @@ class ImageDetailScreen extends StatelessWidget {
             ),
             const SizedBox(height: 16),
             Text(
-              'Photographer: ${image.photographer}',
+              'Photographer: ${widget.image.photographer}',
               style: const TextStyle(fontSize: 18),
             ),
             const SizedBox(height: 8),
             Text(
-              'URL: ${image.src.original}',
+              'URL: ${widget.image.src.original}',
               style: const TextStyle(fontSize: 18),
             ),
             // Add more details if needed
