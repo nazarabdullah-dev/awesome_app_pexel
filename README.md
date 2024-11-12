@@ -55,7 +55,7 @@ flutter test
 To run UI tests, use the following command:
 
 ```sh
-flutter drive --target=integration_test/intrumentation_test.dart
+flutter test integration_test/intrumentation_test.dart
 ```
 
 

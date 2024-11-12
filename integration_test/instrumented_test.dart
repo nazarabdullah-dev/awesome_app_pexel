@@ -4,6 +4,7 @@ import 'dart:convert';
 import 'package:awesome_app/mock_main.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:http/testing.dart';
 import 'package:integration_test/integration_test.dart';
@@ -16,8 +17,10 @@ class MockConnectivity extends Mock implements Connectivity {}
 void main() {
   IntegrationTestWidgetsFlutterBinding.ensureInitialized();
 
-  testWidgets('Check internet connectivity and show dialog',
+  testWidgets(
+      'Check internet connectivity and show detail if there is a list of images',
       (WidgetTester tester) async {
+    await dotenv.load(fileName: 'environment/mock.env');
     final mockHttpClient = MockClient((request) async {
       final response = {
         "page": 1,

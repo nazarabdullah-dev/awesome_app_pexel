@@ -31,4 +31,6 @@ flutter:
   assets:
     - assets/
     - assets/lottie/
+    - environment/main.env
+    - environment/mock.env
 

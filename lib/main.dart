@@ -3,9 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:awesome_app/image_pexel/bloc/image_provider.dart';
 import 'package:awesome_app/image_pexel/screens/image_list_screen.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-void main() {
+void main() async {
+  await dotenv.load(fileName: 'main.env');
   runApp(const MainApp());
 }
 
