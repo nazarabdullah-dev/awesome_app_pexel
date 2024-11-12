@@ -1,6 +1,7 @@
 import 'package:awesome_app/core/widgets/base_state.dart';
 import 'package:awesome_app/image_pexel/bloc/image_provider_event.dart';
 import 'package:awesome_app/image_pexel/bloc/image_provider_state.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:awesome_app/image_pexel/bloc/image_provider.dart';
@@ -31,6 +32,14 @@ class _ImageListScreenState extends BaseState<ImageListScreen> {
     });
   }
 
+  Future<void> _refreshImages() async {
+    ImageProviderBloc block = context.read<ImageProviderBloc>();
+    block.add(FetchImages(isNextPage: false, isPulltoRefresh: true));
+
+    // Wait for the first event to be processed
+    await block.stream.first;
+  }
+
   @override
   void dispose() {
     scrollController.dispose();
@@ -41,6 +50,7 @@ class _ImageListScreenState extends BaseState<ImageListScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: CustomScrollView(
+        physics: const BouncingScrollPhysics(),
         controller: scrollController,
         slivers: [
           SliverAppBar(
@@ -64,6 +74,25 @@ class _ImageListScreenState extends BaseState<ImageListScreen> {
                 },
               ),
             ],
+          ),
+          CupertinoSliverRefreshControl(
+            onRefresh: _refreshImages,
+            builder: (context, refreshState, pulledExtent,
+                refreshTriggerPullDistance, refreshIndicatorExtent) {
+              return AnimatedContainer(
+                height: refreshIndicatorExtent,
+                alignment: Alignment.center,
+                duration: const Duration(milliseconds: 100),
+                child: LottieBuilder.asset(
+                  'assets/lottie/loader.json',
+                  height: 50,
+                  width: 200,
+                  fit: BoxFit.fill,
+                  animate: true,
+                  alignment: Alignment.center,
+                ),
+              );
+            },
           ),
           BlocBuilder<ImageProviderBloc, ImageProviderState>(
             builder: (context, state) {
