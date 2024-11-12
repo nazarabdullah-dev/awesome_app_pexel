@@ -1,10 +1,12 @@
 import 'package:awesome_app/core/widgets/base_state.dart';
+import 'package:awesome_app/image_pexel/bloc/image_provider_event.dart';
+import 'package:awesome_app/image_pexel/bloc/image_provider_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:awesome_app/image_pexel/bloc/image_provider.dart';
 import 'package:awesome_app/image_pexel/screens/image_detail_screen.dart';
 import 'package:lottie/lottie.dart';
-import 'package:awesome_app/image_pexel/models/image_data.dart'; // Import the new models file
+import 'package:awesome_app/image_pexel/models/image_data.dart';
 
 class ImageListScreen extends StatefulWidget {
   const ImageListScreen({super.key});
@@ -142,12 +144,6 @@ class _ImageListScreenState extends BaseState<ImageListScreen> {
                       );
               }
             },
-          ),
-          SliverToBoxAdapter(
-            child: Container(
-              padding: const EdgeInsets.all(16.0),
-              child: const Text('Test Widget'),
-            ),
           ),
           BlocBuilder<ImageProviderBloc, ImageProviderState>(
               builder: (context, state) {

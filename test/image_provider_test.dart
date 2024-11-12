@@ -1,3 +1,5 @@
+import 'package:awesome_app/image_pexel/bloc/image_provider_event.dart';
+import 'package:awesome_app/image_pexel/bloc/image_provider_state.dart';
 import 'package:awesome_app/image_pexel/models/image_data.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:bloc_test/bloc_test.dart';

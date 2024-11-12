@@ -1,4 +1,5 @@
 import 'package:awesome_app/core/bloc/connectivity_bloc.dart';
+import 'package:awesome_app/image_pexel/bloc/image_provider_event.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:awesome_app/image_pexel/bloc/image_provider.dart';
@@ -7,7 +8,7 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 void main() async {
-  await dotenv.load(fileName: 'main.env');
+  await dotenv.load(fileName: 'environment/main.env');
   runApp(const MainApp());
 }
 

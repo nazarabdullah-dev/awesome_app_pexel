@@ -1,4 +1,5 @@
 import 'package:awesome_app/core/bloc/connectivity_bloc.dart';
+import 'package:awesome_app/image_pexel/bloc/image_provider_event.dart';
 import 'package:awesome_app/image_pexel/repository/pexels_api.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/material.dart';
