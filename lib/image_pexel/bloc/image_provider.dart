@@ -21,7 +21,9 @@ class ImageProviderBloc extends Bloc<ImageProviderEvent, ImageProviderState> {
 
   void _onFetchImages(
       FetchImages event, Emitter<ImageProviderState> emit) async {
-    emit(state.copyWith(isLoading: true, hasError: false));
+    if (!event.isPulltoRefresh) {
+      emit(state.copyWith(isLoading: true, hasError: false));
+    }
     try {
       final nextPage = event.isNextPage ? state.page + 1 : 1;
       final images = await api.fetchImages(page: nextPage);

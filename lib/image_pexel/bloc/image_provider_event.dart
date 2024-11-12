@@ -4,8 +4,9 @@ abstract class ImageProviderEvent {}
 
 class FetchImages extends ImageProviderEvent {
   final bool isNextPage;
+  final isPulltoRefresh;
 
-  FetchImages({this.isNextPage = false});
+  FetchImages({this.isNextPage = false, this.isPulltoRefresh = false});
 }
 
 class ChangeViewType extends ImageProviderEvent {
